@@ -1,0 +1,26 @@
+apiVersion: krew.googlecontainertools.github.com/v1alpha2
+kind: Plugin
+metadata:
+  name: backup-diff
+spec:
+  version: "v1.0.2"
+  homepage: https://github.com/milapj/kubectl-backup-diff
+  shortDescription: Backs up a resource, diffs state change with current
+  description: |
+    Resource backup, git-diff like compare state for recovery
+  platforms:
+  - selector:
+      matchExpressions:
+      - key: "os"
+        operator: "In"
+        values:
+        - darwin
+        - linux
+    uri: https://github.com/milapj/kubectl-backup-diff/archive/refs/tags/v1.0.2.tar.gz
+    sha256: 86f52e0bba84caa126720668f6c0401bc864bc850b60f2d07a18b6166ccf42f5
+    files:
+    - from: "kubectl-backup-diff-1.0.2/cmd/kubectl-backup-diff"
+      to: "kubectl-backup-diff"
+    - from: "kubectl-backup-diff-1.0.2/LICENSE"
+      to: "."
+    bin: kubectl-backup-diff
